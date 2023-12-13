@@ -49,8 +49,10 @@ class Blockchain:
 def FindProof(pre_proof):
     diff = 3
     proof = random.randint(1, 1000000)
-    while not isProof(pre_proof, proof, diff):
+    canProof = False
+    while not canProof:
         proof = random.randint(1, 1000000) 
+        canProof = isProof(pre_proof, proof, diff)
     return proof
 
 
