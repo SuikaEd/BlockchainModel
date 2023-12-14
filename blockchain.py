@@ -49,14 +49,14 @@ class Blockchain:
 def FindProof(pre_proof):
     diff = 3
     proof = random.randint(1, 1000000)
-    canProof = False
-    while not canProof:
+    isProof = False
+    while not isProof:
         proof = random.randint(1, 1000000) 
-        canProof = isProof(pre_proof, proof, diff)
+        isProof = ProofofWork(pre_proof, proof, diff)
     return proof
 
 
-def isProof(pre_proof, proof, diff):
+def ProofofWork(pre_proof, proof, diff):
     guess = f'{pre_proof}{proof}'.encode()
     guess_hash = hashlib.sha256(guess).hexdigest()
     return guess_hash[:diff] == '0' * diff
